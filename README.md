@@ -34,9 +34,11 @@ web-intelligence-demo/
 │   ├── api-examples.md
 │   └── architecture.md
 ├── frontend/
+│   ├── public/
 │   ├── src/
 │   └── package.json
 ├── scripts/
+│   ├── export_static_demo.py
 │   └── seed_demo.py
 └── tests/
 ```
@@ -79,7 +81,10 @@ VITE_API_BASE=http://127.0.0.1:8000 npm run dev
 
 ## Netlify deployment
 
-The frontend can be deployed to Netlify directly. The FastAPI backend should be deployed separately to a platform that supports a long-running Python web service, such as Render, Railway, Fly.io, or Cloud Run.
+The frontend can be deployed to Netlify in two modes:
+
+- Static demo mode: works without a live backend and uses the checked-in demo bundle under `frontend/public/demo/`
+- Live API mode: points the frontend at a separately deployed FastAPI service
 
 This repository already includes [netlify.toml](netlify.toml) with:
 
@@ -88,11 +93,17 @@ This repository already includes [netlify.toml](netlify.toml) with:
 - publish directory: `dist`
 - SPA rewrite rule: `/* -> /index.html`
 
-Before deploying to Netlify:
+If you want the deployed site to run as a self-contained proposal demo:
+
+1. Import this repository into Netlify and deploy.
+2. Do not set `VITE_API_BASE`.
+3. The frontend will serve the static bundle and screenshots directly from the repository.
+
+If you want the deployed site to use a live backend:
 
 1. Deploy the backend to a separate host.
 2. In Netlify, set `VITE_API_BASE` to your backend URL.
-3. Import this repository into Netlify and deploy.
+3. Redeploy the site.
 
 Example production variable:
 
@@ -116,6 +127,14 @@ To reseed the dataset:
 cd /path/to/web-intelligence-demo
 source .venv/bin/activate
 PYTHONPATH=backend python scripts/seed_demo.py
+```
+
+To refresh the static demo bundle after reseeding:
+
+```bash
+cd /path/to/web-intelligence-demo
+source .venv/bin/activate
+python scripts/export_static_demo.py
 ```
 
 ## API examples

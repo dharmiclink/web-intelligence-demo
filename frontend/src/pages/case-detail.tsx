@@ -10,7 +10,7 @@ import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
-import { api } from "../lib/api";
+import { api, resolveAssetUrl } from "../lib/api";
 import type { CaseDetail } from "../lib/types";
 import { formatDate, formatPercent } from "../lib/utils";
 
@@ -67,11 +67,7 @@ export function CaseDetailPage() {
               </div>
             </div>
           </div>
-          <img
-            src={`${import.meta.env.VITE_API_BASE ?? "http://127.0.0.1:8000"}${data.screenshot_url}`}
-            alt={data.title}
-            className="h-[360px] w-full object-cover"
-          />
+          <img src={resolveAssetUrl(data.screenshot_url)} alt={data.title} className="h-[360px] w-full object-cover" />
           <div className="grid gap-4 p-6 md:grid-cols-2">
             <div className="rounded-2xl border border-line bg-canvas/70 p-4">
               <p className="text-xs uppercase tracking-[0.16em] text-slate-500">URL</p>

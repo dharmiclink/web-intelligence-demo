@@ -7,7 +7,7 @@ import { SectionHeader } from "../components/section-header";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
-import { api } from "../lib/api";
+import { api, resolveAssetUrl } from "../lib/api";
 import type { CaseDetail, CaseSummary } from "../lib/types";
 import { formatDate } from "../lib/utils";
 
@@ -89,11 +89,7 @@ export function PipelinePage() {
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Selected case</p>
             <h2 className="mt-1 font-display text-2xl font-bold text-ink">{selected.title}</h2>
           </div>
-          <img
-            src={`${import.meta.env.VITE_API_BASE ?? "http://127.0.0.1:8000"}${selected.screenshot_url}`}
-            alt={selected.title}
-            className="h-[320px] w-full object-cover"
-          />
+          <img src={resolveAssetUrl(selected.screenshot_url)} alt={selected.title} className="h-[320px] w-full object-cover" />
           <div className="grid gap-4 p-6 md:grid-cols-2">
             <div className="rounded-2xl border border-line bg-canvas/60 p-4">
               <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Detected category</p>
