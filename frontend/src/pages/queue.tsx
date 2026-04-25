@@ -92,7 +92,7 @@ export function QueuePage() {
           <QueueMetric label="High-risk cases" value={String(metrics.highRisk)} icon={AlertTriangle} />
           <QueueMetric label="In review" value={String(metrics.inReview)} icon={Clock3} />
           <QueueMetric label="Unassigned" value={String(metrics.unassigned)} icon={UserRoundX} />
-          <QueueMetric label="Malaysia-targeted" value={String(metrics.malaysiaTargeted)} icon={ShieldCheck} />
+          <QueueMetric label="Target-market flagged" value={String(metrics.malaysiaTargeted)} icon={ShieldCheck} />
         </section>
       ) : null}
 
@@ -122,7 +122,7 @@ export function QueuePage() {
                 onChange={(value) => setStatusFilter(value as typeof statusFilter)}
               />
               <FilterGroup
-                label="Malaysia targeting"
+                label="Target market"
                 options={["All", "Targeted", "Not Targeted"]}
                 value={targetedFilter}
                 onChange={(value) => setTargetedFilter(value as typeof targetedFilter)}
@@ -135,10 +135,10 @@ export function QueuePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Queue posture</p>
           <div className="mt-4 space-y-4 text-sm leading-6 text-slate-600">
             <div className="rounded-3xl border border-line bg-canvas/70 p-4">
-              This queue view is designed for analyst triage. It emphasizes risk posture, Malaysia-targeting relevance, owner assignment, and recent activity.
+              This queue view is designed for analyst triage. It emphasizes risk posture, target-market relevance, owner assignment, and recent activity.
             </div>
             <div className="rounded-3xl border border-line bg-canvas/70 p-4">
-              Priority order is derived from risk level first, then Malaysia-targeting status, then submission recency. Findings remain decision-support only.
+              Priority order is derived from risk level first, then target-market status, then submission recency. Findings remain decision-support only.
             </div>
             <div className="rounded-3xl border border-line bg-canvas/70 p-4">
               Current filtered result set: <span className="font-semibold text-ink">{filtered.length}</span> cases.
@@ -164,7 +164,7 @@ export function QueuePage() {
                 <p className="mt-2 font-semibold text-ink">{item.category}</p>
               </div>
               <div className="rounded-2xl border border-line bg-canvas/70 p-4">
-                <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Malaysia targeting</p>
+                <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Target market</p>
                 <p className="mt-2 font-semibold text-ink">
                   {item.malaysia_targeted ? "Targeted" : "Not targeted"} ({item.malaysia_targeting_score}/100)
                 </p>
@@ -199,7 +199,7 @@ export function QueuePage() {
                 <tr>
                   <th className="px-6 py-4 font-medium">Case</th>
                   <th className="px-6 py-4 font-medium">Risk</th>
-                  <th className="px-6 py-4 font-medium">Malaysia targeting</th>
+                  <th className="px-6 py-4 font-medium">Target market</th>
                   <th className="px-6 py-4 font-medium">Status</th>
                   <th className="px-6 py-4 font-medium">Owner</th>
                   <th className="px-6 py-4 font-medium">Submitted</th>
@@ -243,7 +243,7 @@ export function QueuePage() {
             <div className="rounded-3xl border border-dashed border-line bg-canvas/70 p-8 text-center">
               <p className="font-display text-2xl font-bold text-ink">No cases match the current filters</p>
               <p className="mt-3 text-sm leading-6 text-slate-600">
-                Adjust search terms, risk level, status, or Malaysia-targeting filters to restore the queue view.
+                Adjust search terms, risk level, status, or target-market filters to restore the queue view.
               </p>
             </div>
           </div>

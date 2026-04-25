@@ -6,6 +6,6 @@ coverage
 .venv
 __pycache__
 *.pyc
+*.tsbuildinfo
 data/demo.db
 frontend/.vite
-

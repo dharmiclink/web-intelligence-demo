@@ -59,7 +59,7 @@ export function DemoDataPage() {
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <SeedPanel title="Volume" copy="Generates 50 to 100 credible synthetic URLs and case records by default." />
             <SeedPanel title="Variety" copy="Blends suspicious pharmacy, gambling, adult content, benign commerce, and unknown review scenarios." />
-            <SeedPanel title="Malaysia signals" copy="Introduces transparent evidence such as MYR pricing, Malay language markers, shipping references, and local phone patterns." />
+            <SeedPanel title="Target-market signals" copy="Introduces transparent evidence such as MYR pricing, Malay language markers, shipping references, and local phone patterns." />
             <SeedPanel title="Presentation assets" copy="Creates synthetic screenshot placeholders and trend timestamps suitable for proposal decks." />
           </div>
         </Card>
@@ -76,4 +76,3 @@ function SeedPanel({ title, copy }: { title: string; copy: string }) {
     </div>
   );
 }
-

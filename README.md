@@ -1,6 +1,6 @@
-# Malaysia Web Intelligence Proposal Demo
+# Web Intelligence Proposal Demo
 
-Polished full-stack proposal demo for a Malaysia-targeted web intelligence platform. The application demonstrates how a regulator-style workflow can intake suspicious URLs, simulate crawl and feature extraction, score Malaysia-targeting signals, classify regulatory risk, generate explainable case summaries, and route cases to agency review queues.
+Polished full-stack proposal demo for a jurisdiction-focused web intelligence platform. The application demonstrates how a regulator-style workflow can intake suspicious URLs, simulate crawl and feature extraction, score target-market signals, classify regulatory risk, generate explainable case summaries, and route cases to agency review queues.
 
 The system is intentionally framed as decision-support only. It does not implement blocking, takedown, or enforcement automation.
 
@@ -19,7 +19,7 @@ The system is intentionally framed as decision-support only. It does not impleme
 ## Repository structure
 
 ```text
-malaysia-web-intelligence-demo/
+web-intelligence-demo/
 ├── backend/
 │   ├── app/
 │   │   ├── api/
@@ -43,14 +43,14 @@ malaysia-web-intelligence-demo/
 
 ## Architecture
 
-See [docs/architecture.md](/Users/tarmarajapadrasono/malaysia-web-intelligence-demo/docs/architecture.md) for the Mermaid diagram and proposal notes.
+See [docs/architecture.md](docs/architecture.md) for the Mermaid diagram and proposal notes.
 
 ## Local run instructions
 
 ### Backend
 
 ```bash
-cd /Users/tarmarajapadrasono/malaysia-web-intelligence-demo
+cd /path/to/web-intelligence-demo
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r backend/requirements.txt
@@ -64,7 +64,7 @@ The backend runs on `http://127.0.0.1:8000`. On first startup it creates `data/d
 Open a second terminal:
 
 ```bash
-cd /Users/tarmarajapadrasono/malaysia-web-intelligence-demo/frontend
+cd /path/to/web-intelligence-demo/frontend
 npm install
 npm run dev
 ```
@@ -81,7 +81,7 @@ VITE_API_BASE=http://127.0.0.1:8000 npm run dev
 
 The frontend can be deployed to Netlify directly. The FastAPI backend should be deployed separately to a platform that supports a long-running Python web service, such as Render, Railway, Fly.io, or Cloud Run.
 
-This repository already includes [netlify.toml](/Users/tarmarajapadrasono/malaysia-web-intelligence-demo/netlify.toml) with:
+This repository already includes [netlify.toml](netlify.toml) with:
 
 - base directory: `frontend`
 - build command: `npm run build`
@@ -100,32 +100,32 @@ Example production variable:
 VITE_API_BASE=https://your-api.example.com
 ```
 
-You can copy [frontend/.env.example](/Users/tarmarajapadrasono/malaysia-web-intelligence-demo/frontend/.env.example) for local reference, but don’t commit real production values.
+You can copy [frontend/.env.example](frontend/.env.example) for local reference, but don’t commit real production values.
 
 ## Seed data and demo logic
 
 - Seed generation is intentionally synthetic and clearly marked as mock/demo logic.
 - Screenshot captures are generated SVG placeholders, not live web captures.
 - Classification uses a rule-based engine with visible reason codes.
-- Malaysia-targeting uses a transparent points-based scoring model.
+- Target-market scoring uses a transparent points-based model.
 - Queue routing uses category-to-agency mapping with simple policy overrides.
 
 To reseed the dataset:
 
 ```bash
-cd /Users/tarmarajapadrasono/malaysia-web-intelligence-demo
+cd /path/to/web-intelligence-demo
 source .venv/bin/activate
 PYTHONPATH=backend python scripts/seed_demo.py
 ```
 
 ## API examples
 
-See [docs/api-examples.md](/Users/tarmarajapadrasono/malaysia-web-intelligence-demo/docs/api-examples.md).
+See [docs/api-examples.md](docs/api-examples.md).
 
 ## Testing
 
 ```bash
-cd /Users/tarmarajapadrasono/malaysia-web-intelligence-demo
+cd /path/to/web-intelligence-demo
 source .venv/bin/activate
 pytest tests
 ```
@@ -140,7 +140,7 @@ After starting the backend and frontend, capture these proposal-ready views for 
 - Agency Queue
 - Proposal And Architecture
 
-Generated placeholder case imagery is stored under [data/assets/screenshots](/Users/tarmarajapadrasono/malaysia-web-intelligence-demo/data/assets/screenshots).
+Generated placeholder case imagery is stored under [data/assets/screenshots](data/assets/screenshots).
 
 ## Notes for reviewers
 

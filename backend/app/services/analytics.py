@@ -29,8 +29,8 @@ def build_overview(db: Session) -> dict:
     signal_distribution = Counter()
     for case in cases:
         for item in case.evidence_bullets:
-            if "Malaysia-targeting score" in item:
-                signal_distribution["Malaysia-targeting score"] += 1
+            if "Target-market score" in item:
+                signal_distribution["Target-market score"] += 1
             if "Top targeting evidence" in item:
                 signal_distribution["Evidence summary present"] += 1
     if snapshots:
@@ -58,7 +58,7 @@ def build_overview(db: Session) -> dict:
         "kpis": [
             {"label": "URLs Scanned", "value": f"{len(submissions):,}", "delta": "+12% week on week", "tone": "neutral"},
             {"label": "Suspicious Sites Detected", "value": f"{suspicious_count:,}", "delta": "Rules-led triage active", "tone": "alert"},
-            {"label": "Malaysia-Targeted Sites Detected", "value": f"{targeted_count:,}", "delta": "Transparent market scoring", "tone": "positive"},
+            {"label": "Target-Market Sites Detected", "value": f"{targeted_count:,}", "delta": "Transparent market scoring", "tone": "positive"},
             {"label": "High-Risk Cases", "value": f"{high_risk_count:,}", "delta": "Executive review priority", "tone": "alert"},
             {"label": "Average Analyst Review Time", "value": f"{avg_review_hours:.1f} hrs", "delta": "POC operating baseline", "tone": "neutral"},
         ],

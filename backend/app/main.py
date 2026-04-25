@@ -25,7 +25,7 @@ async def lifespan(_: FastAPI):
 
 
 app = FastAPI(
-    title="Malaysia Web Intelligence Proposal Demo",
+    title="Web Intelligence Proposal Demo",
     version="0.1.0",
     lifespan=lifespan,
 )

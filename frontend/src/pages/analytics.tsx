@@ -104,7 +104,7 @@ export function AnalyticsPage() {
       <section className="grid gap-6 xl:grid-cols-3">
         <SimpleBarCard title="Reviewer outcomes" data={data.reviewer_outcomes} tone="#124c76" />
         <SimpleBarCard title="Outcome placeholders" data={data.outcome_placeholders} tone="#1f6a62" />
-        <SimpleBarCard title="Malaysia-targeting patterns" data={data.targeting_patterns} tone="#9a6b18" />
+        <SimpleBarCard title="Target-market patterns" data={data.targeting_patterns} tone="#9a6b18" />
       </section>
     </div>
   );
@@ -145,4 +145,3 @@ function SimpleBarCard({
     </Card>
   );
 }
-

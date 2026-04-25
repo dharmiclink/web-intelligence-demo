@@ -5,7 +5,7 @@ flowchart LR
     A["URL Intake<br/>Manual entry / bulk upload / demo seeding"] --> B["Crawl and Capture<br/>Mock content capture + screenshot placeholder"]
     B --> C["Feature Extraction<br/>Keywords, entities, pricing, language, shipping references"]
     C --> D["Explainable Classification Engine<br/>Rules and reason codes"]
-    C --> E["Malaysia-Targeting Scoring Engine<br/>Transparent signal scoring"]
+    C --> E["Target-Market Scoring Engine<br/>Transparent signal scoring"]
     D --> F["Case Generation Service<br/>Summary, evidence, rationale, timeline"]
     E --> F
     F --> G["Routing Policy Service<br/>Queue recommendation"]
@@ -26,4 +26,3 @@ flowchart LR
 - The demo uses seeded synthetic data and placeholder screenshot captures.
 - All findings are framed as analyst decision-support, not enforcement automation.
 - Queue routing is configuration-driven and intentionally transparent for proposal review.
-

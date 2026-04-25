@@ -15,7 +15,7 @@ import { formatDate } from "../lib/utils";
 const sampleUrls = [
   "https://rapid-rx-portal.example",
   "https://nusantara-jackpot-hub.example",
-  "https://malaysia-market-catalog.example",
+  "https://regional-market-catalog.example",
   "https://opaque-routing-board.example",
 ];
 
@@ -222,4 +222,3 @@ export function IntakePage() {
     </div>
   );
 }
-

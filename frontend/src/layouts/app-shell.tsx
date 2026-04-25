@@ -26,7 +26,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </div>
               <div>
                 <p className="font-display text-2xl font-extrabold leading-tight text-ink">
-                  Malaysia-Targeted Compliance Intelligence
+                  Jurisdictional Compliance Intelligence
                 </p>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   Decision-support workflow for regulatory triage, explainable classification, and agency routing.
@@ -70,7 +70,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   Proposal Demo
                 </div>
                 <p className="font-display text-xl font-extrabold text-ink">
-                  Malaysia-Targeted Web Intelligence Proposal Demo
+                  Web Intelligence Proposal Demo
                 </p>
                 <p className="text-sm leading-6 text-slate-600">
                   Advisory workflow only. The experience is optimized for executive walkthroughs, analyst review, and proposal evaluation.

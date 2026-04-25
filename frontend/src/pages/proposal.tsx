@@ -8,7 +8,7 @@ const roadmap = [
   {
     phase: "Phase 1",
     title: "Proof of concept",
-    detail: "Demonstrate explainable classification, Malaysia-targeting scoring, and queue routing across a limited synthetic dataset.",
+    detail: "Demonstrate explainable classification, target-market scoring, and queue routing across a limited synthetic dataset.",
   },
   {
     phase: "Phase 2",
@@ -28,7 +28,7 @@ export function ProposalPage() {
       <SectionHeader
         eyebrow="Proposal And Architecture"
         title="POC Scope, Architecture, And Governance Model"
-        description="Presentation-grade materials for steering committees, technical review panels, and policy stakeholders evaluating a Malaysia-targeted compliance intelligence platform."
+        description="Presentation-grade materials for steering committees, technical review panels, and policy stakeholders evaluating a jurisdiction-focused compliance intelligence platform."
       />
 
       <section className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
@@ -42,7 +42,7 @@ export function ProposalPage() {
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <ProposalPanel title="Operational clarity" copy="Show how suspicious URLs move from intake to evidence-backed case review without implying automated enforcement." />
-            <ProposalPanel title="Malaysia targeting transparency" copy="Use a transparent scoring model with visible signals such as MYR pricing, Malay language, shipping references, and contact markers." />
+            <ProposalPanel title="Target-market transparency" copy="Use a transparent scoring model with visible signals such as MYR pricing, Malay language, shipping references, and contact markers." />
             <ProposalPanel title="Cross-agency routing" copy="Demonstrate queue assignment into Ministry of Health, Customs, Police, and MCMC style review lanes." />
             <ProposalPanel title="Auditability by design" copy="Every stage surfaces reasoning, evidence, and timestamped workflow history for stakeholder review." />
           </div>
@@ -62,7 +62,7 @@ export function ProposalPage() {
               "Crawl and content capture",
               "Feature extraction",
               "Explainable classification",
-              "Malaysia-targeting scoring",
+              "Target-market scoring",
               "Case summary generation",
               "Agency queue routing",
             ].map((step, index) => (
@@ -94,7 +94,7 @@ export function ProposalPage() {
             />
             <ArchitectureColumn
               title="Application services"
-              items={["Intake orchestration", "Classification engine", "Malaysia-targeting scorer", "Routing policy service"]}
+              items={["Intake orchestration", "Classification engine", "Target-market scorer", "Routing policy service"]}
             />
             <ArchitectureColumn
               title="Data layer"
@@ -141,7 +141,7 @@ export function ProposalPage() {
           </div>
           <div className="mt-5 space-y-4">
             <ProposalPanel title="Tier 1 triage" copy="Intake analyst validates URL quality, evidence completeness, and suggested queue alignment." />
-            <ProposalPanel title="Tier 2 specialist review" copy="Receiving agency reviews category rationale, Malaysia-targeting evidence, and operating context." />
+            <ProposalPanel title="Tier 2 specialist review" copy="Receiving agency reviews category rationale, target-market evidence, and operating context." />
             <ProposalPanel title="Governance oversight" copy="Programme office monitors false positive rates, policy changes, and inter-agency service metrics." />
           </div>
         </Card>
@@ -186,4 +186,3 @@ function ArchitectureColumn({ title, items }: { title: string; items: string[] }
     </div>
   );
 }
-

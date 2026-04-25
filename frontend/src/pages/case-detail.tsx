@@ -50,7 +50,7 @@ export function CaseDetailPage() {
       <SectionHeader
         eyebrow="Case Detail"
         title={data.case_reference}
-        description="Detailed evidence pack for analyst review, category rationale, Malaysia-targeting signals, and placeholder routing recommendation."
+        description="Detailed evidence pack for analyst review, category rationale, target-market signals, and placeholder routing recommendation."
       />
 
       <section className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
@@ -89,7 +89,7 @@ export function CaseDetailPage() {
             <div className="grid gap-4 md:grid-cols-2">
               <Metric label="Detected category" value={data.category} icon={ClipboardList} />
               <Metric label="Confidence" value={formatPercent(data.confidence)} icon={Eye} />
-              <Metric label="Malaysia-targeting score" value={`${data.malaysia_targeting.score}/100`} icon={Landmark} />
+              <Metric label="Target-market score" value={`${data.malaysia_targeting.score}/100`} icon={Landmark} />
               <Metric label="Recommended queue" value={data.queue_name} icon={FileStack} />
             </div>
           </Card>
@@ -112,7 +112,7 @@ export function CaseDetailPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Indicators and rationale</p>
           <div className="mt-5 grid gap-4">
             <Panel label="Reason codes" values={data.classification.reason_codes} />
-            <Panel label="Malaysia signals" values={data.features.malaysia_signals} />
+            <Panel label="Target-market signals" values={data.features.malaysia_signals} />
             <Panel label="Extracted entities" values={data.features.extracted_entities} />
             <Panel label="Keywords" values={data.features.keywords} />
           </div>
@@ -158,7 +158,7 @@ export function CaseDetailPage() {
 
       <section className="grid gap-6 xl:grid-cols-[1fr_1fr]">
         <Card className="p-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Malaysia-targeting model</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Target-market model</p>
           <div className="mt-5 space-y-4">
             <div className="rounded-3xl border border-line bg-canvas/70 p-5">
               <div className="flex flex-wrap items-center justify-between gap-3">

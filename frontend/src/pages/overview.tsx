@@ -43,7 +43,7 @@ export function OverviewPage() {
       <SectionHeader
         eyebrow="Executive Overview"
         title="National Digital Compliance Intelligence Platform"
-        description="Proposal demonstration of a regulator-style workflow for detecting Malaysia-targeted sites, classifying regulatory risk, generating explainable case summaries, and routing cases to the relevant government review queue."
+        description="Proposal demonstration of a regulator-style workflow for detecting target-market sites, classifying regulatory risk, generating explainable case summaries, and routing cases to the relevant government review queue."
         action={
           <div className="flex flex-wrap gap-3">
             <div className="inline-flex items-center rounded-full bg-accentSoft px-5 py-2.5 text-sm font-semibold text-accent">
@@ -78,7 +78,7 @@ export function OverviewPage() {
             {[
               ["Overview", "Establish system scale, suspicious volume, and current routing posture."],
               ["Pipeline", "Show each analysis stage and the evidence generated at every step."],
-              ["Case detail", "Explain category reasoning, Malaysia-targeting score, and analyst-ready summary."],
+              ["Case detail", "Explain category reasoning, target-market score, and analyst-ready summary."],
               ["Proposal", "Close with operating model, governance principles, and phased rollout."],
             ].map(([title, copy], index) => (
               <div key={title} className="rounded-3xl border border-line bg-canvas/70 p-5">
@@ -95,21 +95,21 @@ export function OverviewPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Scoring and routing policy</p>
           <div className="mt-5 space-y-4">
             <div className="rounded-3xl border border-line bg-canvas/70 p-5">
-              <p className="font-semibold text-ink">Malaysia-targeting threshold</p>
+              <p className="font-semibold text-ink">Target-market threshold</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                The current POC flags a site as Malaysia-targeted once transparent market-facing signals reach 35 points.
+                The current POC flags a site as jurisdiction-targeted once transparent market-facing signals reach 35 points.
               </p>
             </div>
             <div className="rounded-3xl border border-line bg-canvas/70 p-5">
               <p className="font-semibold text-ink">Primary scoring signals</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                MYR pricing, Malay language, Malaysia shipping references, local phone patterns, state or city addresses, and domestic consumer positioning.
+                MYR pricing, Malay language, domestic shipping references, local phone patterns, state or city addresses, and domestic consumer positioning.
               </p>
             </div>
             <div className="rounded-3xl border border-line bg-canvas/70 p-5">
               <p className="font-semibold text-ink">Routing principle</p>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Category policy determines the default queue, with Malaysia-targeting and risk posture used as advisory routing context.
+                Category policy determines the default queue, with target-market relevance and risk posture used as advisory routing context.
               </p>
             </div>
           </div>
@@ -158,7 +158,7 @@ export function OverviewPage() {
           </Card>
 
           <Card className="p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Malaysia-targeting evidence mix</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Target-market evidence mix</p>
             <div className="mt-5 h-[230px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={data.targeting_signals} layout="vertical" margin={{ left: 40 }}>

@@ -33,7 +33,7 @@ SITE_BLUEPRINTS = [
         "name": "rx-express-market",
         "category_hint": "Illegal or suspicious pharmacy",
         "title": "Express Wellness Pharmacy",
-        "content": "Buy prescription pill packs online. Harga RM189 with penghantaran Malaysia and WhatsApp +60 11-2334 7788 from Kuala Lumpur.",
+        "content": "Buy prescription pill packs online. Harga RM189 with local shipping support and WhatsApp +60 11-2334 7788 from Kuala Lumpur.",
         "market_copy": "Direct-to-consumer medicine promotion with rapid checkout claims and limited compliance disclosures.",
         "recommended_action": "Escalate to Ministry of Health review for product legitimacy, labeling, and import-control assessment.",
     },
@@ -41,7 +41,7 @@ SITE_BLUEPRINTS = [
         "name": "slot-nusantara",
         "category_hint": "Gambling",
         "title": "Nusantara Bet Exchange",
-        "content": "Sportsbook jackpot offers for Malaysian customers. Deposit in MYR, call +60 3-2277 9900. Trusted by Malaysia market operators.",
+        "content": "Sportsbook jackpot offers for local customers. Deposit in MYR, call +60 3-2277 9900. Trusted by domestic market operators.",
         "market_copy": "Consumer-facing betting interface with domestic payment language and repeated jackpot acquisition prompts.",
         "recommended_action": "Route to Police review queue for validation of gambling indicators and any downstream inter-agency coordination.",
     },
@@ -57,7 +57,7 @@ SITE_BLUEPRINTS = [
         "name": "borneo-harvest-store",
         "category_hint": "General commerce / benign",
         "title": "Borneo Harvest Commerce",
-        "content": "Official catalog for local crafts with MYR checkout, delivery across West Malaysia and East Malaysia, and Johor warehouse notice.",
+        "content": "Official catalog for local crafts with MYR checkout, delivery across regional zones, and Johor warehouse notice.",
         "market_copy": "Conventional cross-border commerce presentation with local shipping statements and declared logistics partners.",
         "recommended_action": "Route to Customs review queue for routine triage where commercial declarations or import checks are relevant.",
     },
@@ -75,7 +75,7 @@ STATUS_OPTIONS = ["new", "pending-review", "in-review", "escalation-placeholder"
 ANALYSTS = ["Nur Aina", "Hakim Iskandar", "Siti Farrah", "Daniel Ong", "Review Pending"]
 REVIEW_NOTES = [
     "Automated evidence pack prepared for analyst validation and queue briefing.",
-    "Signals indicate Malaysia market positioning; ownership and payment-path verification remain manual.",
+    "Signals indicate domestic market positioning; ownership and payment-path verification remain manual.",
     "Routing confidence is acceptable for proposal triage, but no agency action is automated.",
     "Placeholder escalation logic only. Any onward action would require policy and analyst confirmation.",
 ]
@@ -190,16 +190,16 @@ def seed_demo_data(db: Session, count: int = 72, reset: bool = False) -> dict:
 
         evidence = [
             f"Detected category indicators: {', '.join(category_result.reason_codes[:2])}",
-            f"Malaysia-targeting score: {targeting_result.score}/100 against a 35-point threshold",
+            f"Target-market score: {targeting_result.score}/100 against a 35-point threshold",
             f"Top targeting evidence: {', '.join(signal['label'] for signal in targeting_result.top_signals[:3]) or 'limited signal coverage'}",
-            f"Observed market references include {city}, {landline}, and direct Malaysia-facing copy.",
+            f"Observed market references include {city}, {landline}, and direct local-market copy.",
         ]
         timeline = [
             {"stage": "URL intake", "status": "completed", "time": submitted_at.isoformat(), "detail": "Submission accepted into the proposal workflow."},
             {"stage": "Crawl", "status": "completed", "time": (submitted_at + timedelta(minutes=2)).isoformat(), "detail": "Landing page metadata, placeholder screenshot, and declared contact details captured."},
             {"stage": "Feature extraction", "status": "completed", "time": (submitted_at + timedelta(minutes=4)).isoformat(), "detail": f"Language, pricing, address, keyword, and locality indicators extracted for {city} context."},
             {"stage": "Classification", "status": "completed", "time": (submitted_at + timedelta(minutes=5)).isoformat(), "detail": category_result.explanation},
-            {"stage": "Malaysia targeting", "status": "completed", "time": (submitted_at + timedelta(minutes=6)).isoformat(), "detail": targeting_result.explanation},
+            {"stage": "Target-market scoring", "status": "completed", "time": (submitted_at + timedelta(minutes=6)).isoformat(), "detail": targeting_result.explanation},
             {"stage": "Case generation", "status": "completed", "time": (submitted_at + timedelta(minutes=7)).isoformat(), "detail": "Executive summary, evidence bullets, and policy-facing narrative prepared for analyst review."},
             {"stage": "Routing", "status": "completed", "time": (submitted_at + timedelta(minutes=8)).isoformat(), "detail": f"Assigned to {queue_name} with advisory policy logic only."},
         ]
@@ -218,11 +218,11 @@ def seed_demo_data(db: Session, count: int = 72, reset: bool = False) -> dict:
             evidence_bullets=evidence,
             reasoning=(
                 f"The case demonstrates explainable scoring with confidence {category_result.confidence:.2f}, "
-                f"Malaysia-targeting score {targeting_result.score:.1f}, and market references tied to {city}. "
+                f"Target-market score {targeting_result.score:.1f}, and market references tied to {city}. "
                 f"Automated outputs are advisory only and intended for analyst triage."
             ),
             routing_reason=(
-                f"Category policy, Malaysia-targeting evidence, and {category_result.risk_level.lower()}-risk posture "
+                f"Category policy, target-market evidence, and {category_result.risk_level.lower()}-risk posture "
                 f"collectively mapped this case to {queue_name}."
             ),
             recommended_action=blueprint["recommended_action"],
@@ -255,7 +255,7 @@ def seed_demo_data(db: Session, count: int = 72, reset: bool = False) -> dict:
 
 
 def _build_summary(category: str, malaysia_targeted: bool, queue_name: str, city: str) -> str:
-    targeting_copy = "shows Malaysia-targeting indicators" if malaysia_targeted else "shows limited Malaysia-targeting indicators"
+    targeting_copy = "shows target-market indicators" if malaysia_targeted else "shows limited target-market indicators"
     return (
         f"Automated assessment indicates the site aligns with {category.lower()}, {targeting_copy}, "
         f"and references {city}. Case routed to {queue_name} for structured review."
@@ -288,7 +288,7 @@ def _write_screenshot(index: int, filename: str, title: str, category: str, scor
 <rect x="632" y="184" width="472" height="72" rx="18" fill="{category_color}" opacity="0.12" />
 <text x="664" y="228" font-family="Arial, sans-serif" font-size="32" fill="#0F253D">{title}</text>
 <text x="664" y="286" font-family="Arial, sans-serif" font-size="22" fill="#506173">Category: {category}</text>
-<text x="664" y="326" font-family="Arial, sans-serif" font-size="22" fill="#506173">Malaysia-targeting score: {score:.0f}/100</text>
+<text x="664" y="326" font-family="Arial, sans-serif" font-size="22" fill="#506173">Target-market score: {score:.0f}/100</text>
 <text x="664" y="366" font-family="Arial, sans-serif" font-size="22" fill="#506173">Executive-grade placeholder capture for proposal walkthroughs</text>
 <rect x="112" y="468" width="992" height="116" rx="24" fill="#0F253D" />
 <text x="152" y="528" font-family="Arial, sans-serif" font-size="28" fill="#FFFFFF">Demonstration screenshot placeholder</text>
@@ -311,8 +311,8 @@ def _build_snapshots(cases: list[CaseRecord], now: datetime) -> list[AnalyticsSn
         targeting_breakdown = {
             "MYR pricing": 14 + offset,
             "Malay language usage": 10 + offset // 2,
-            "Malaysia shipping references": 8 + offset // 3,
-            "Malaysian phone numbers": 6 + offset // 4,
+            "Domestic shipping references": 8 + offset // 3,
+            "Domestic phone numbers": 6 + offset // 4,
         }
         snapshots.append(
             AnalyticsSnapshot(

@@ -182,7 +182,7 @@ def analyze_submission(submission_id: int, db: Session = Depends(get_db)):
         summary="New submission analysed through the mock pipeline.",
         evidence_bullets=[
             f"Classification reason codes: {', '.join(category.reason_codes[:2])}",
-            f"Malaysia-targeting score: {targeting.score}",
+            f"Target-market score: {targeting.score}",
         ],
         reasoning="Mock rule evaluation completed.",
         routing_reason=f"Routed to {queue_name}.",

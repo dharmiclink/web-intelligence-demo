@@ -100,7 +100,7 @@ export function PipelinePage() {
               <p className="mt-2 font-semibold text-ink">{selected.classification.category}</p>
             </div>
             <div className="rounded-2xl border border-line bg-canvas/60 p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Malaysia-targeting score</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Target-market score</p>
               <p className="mt-2 font-semibold text-ink">{selected.malaysia_targeting.score}/100</p>
             </div>
           </div>

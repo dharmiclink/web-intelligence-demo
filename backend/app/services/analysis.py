@@ -43,10 +43,10 @@ RISK_BY_CATEGORY = {
 SIGNAL_PATTERNS = [
     ("MYR pricing", r"\b(?:rm|myr)\s?\d+", 22),
     ("Malay language usage", r"\b(?:harga|ubat|penghantaran|pelanggan|promosi|cepat)\b", 16),
-    ("Malaysia shipping references", r"\b(?:shipping to malaysia|penghantaran malaysia|poslaju|west malaysia|east malaysia)\b", 16),
-    ("Malaysian phone numbers", r"\b(?:\+60|03-|04-|07-|011-)\b", 14),
-    ("Malaysia addresses", r"\b(?:kuala lumpur|selangor|penang|johor|putrajaya|shah alam)\b", 12),
-    ("References to Malaysian consumers", r"\b(?:malaysian customers|pengguna malaysia|untuk rakyat malaysia)\b", 10),
+    ("Domestic shipping references", r"\b(?:shipping to malaysia|penghantaran malaysia|poslaju|west malaysia|east malaysia)\b", 16),
+    ("Domestic phone numbers", r"\b(?:\+60|03-|04-|07-|011-)\b", 14),
+    ("Local jurisdiction addresses", r"\b(?:kuala lumpur|selangor|penang|johor|putrajaya|shah alam)\b", 12),
+    ("References to domestic consumers", r"\b(?:malaysian customers|pengguna malaysia|untuk rakyat malaysia)\b", 10),
     ("Local market positioning", r"\b(?:trusted by malaysia|for malaysia market|kedai malaysia)\b", 10),
 ]
 TARGETING_THRESHOLD = 35
@@ -130,7 +130,7 @@ def analyse_malaysia_targeting(content: str) -> TargetingOutput:
     score = min(total, 100)
     targeted = score >= TARGETING_THRESHOLD
     explanation = (
-        "Malaysia-targeting score is derived from transparent market-facing indicators "
+        "Target-market score is derived from transparent market-facing indicators "
         "including pricing, language, shipping references, phone patterns, and address markers."
     )
     return TargetingOutput(
@@ -147,7 +147,7 @@ def build_targeting_model(score: float, targeted: bool, signals: list[dict]) -> 
         "score": score,
         "targeted": targeted,
         "decision_rule": (
-            f"Flag as Malaysia-targeted when transparent market-facing signals reach {TARGETING_THRESHOLD} points."
+            f"Flag as jurisdiction-targeted when transparent market-facing signals reach {TARGETING_THRESHOLD} points."
         ),
         "signal_rows": [
             {
@@ -170,11 +170,11 @@ def build_routing_policy(category: str, malaysia_targeted: bool, queue_name: str
                 "detail": f"{category} cases default to {queue_name} under the proposal routing model.",
             },
             {
-                "title": "Malaysia-targeting check",
+                "title": "Target-market check",
                 "detail": (
-                    "Malaysia-targeting threshold met, supporting queue prioritisation for domestic review relevance."
+                    "Target-market threshold met, supporting queue prioritisation for domestic review relevance."
                     if malaysia_targeted
-                    else "Malaysia-targeting threshold not met, so routing remains conservative and advisory."
+                    else "Target-market threshold not met, so routing remains conservative and advisory."
                 ),
             },
             {

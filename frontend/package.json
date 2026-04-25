@@ -1,5 +1,5 @@
 {
-  "name": "malaysia-web-intelligence-demo-frontend",
+  "name": "web-intelligence-demo-frontend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -30,4 +30,3 @@
     "vite": "^7.1.2"
   }
 }
-
